@@ -3,7 +3,7 @@
         <img src="{{ asset('images/logo.svg') }}" class="w-30 mt-4" alt="logo">
     </header>
 
-    <main>
+    <main >
         {{-- balance --}}
         <section class="flex justify-around -my-16">
             {{-- income --}}
@@ -40,9 +40,58 @@
             </div>
         </section>
 
-        {{-- data-table --}}
-        <section>
+        <section class="mt-24 ml-16">
+            <div class="w-36 flex justify-between">
+                <img src="{{ asset('images/plus.svg')}}" class="w-15" alt="plus">
+                <span class="text-green-500">Nova Transação</span>
+            </div>
+        </section>
 
+        {{-- data-table --}}
+        <section class="w-15 mt-5">
+            <div class="w-11/12 p-2 mx-auto bg-white rounded flex justify-between">
+                <div>
+                    <span>Descrição</span>
+                </div>
+                <div>
+                    <span>Valor</span>
+                </div>
+                <div>
+                    <span>Data</span>
+                </div>
+                <div>
+
+                </div>
+            </div>
+
+            <div class="w-11/12 p-2 mx-auto mt-3 bg-gray-200 rounded flex justify-around">
+                <div>
+                    lus
+                </div>
+                <div>
+                    lus
+                </div>
+                <div>
+                    lus
+                </div>
+                <div>
+                    <img src="{{ asset('images/minus.svg') }}" alt="">
+                </div>
+            </div>
+            <div class="w-11/12 p-2 mx-auto mt-3 bg-gray-200 rounded flex justify-around">
+                <div>
+                    lus
+                </div>
+                <div>
+                    lus
+                </div>
+                <div>
+                    lus
+                </div>
+                <div>
+                    <img src="{{ asset('images/minus.svg') }}" alt="">
+                </div>
+            </div>
         </section>
     </main>
 </div>
