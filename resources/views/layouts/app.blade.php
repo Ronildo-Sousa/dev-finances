@@ -7,8 +7,8 @@
     <title>@yield('title')</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @livewireStyles
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body >
     @yield('content')

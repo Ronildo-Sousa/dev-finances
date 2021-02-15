@@ -41,10 +41,11 @@
         </section>
 
         <section class="mt-24 ml-16">
-            <div class="w-36 flex justify-between">
+            <button wire:click="save" class="w-36 flex justify-between">
                 <img src="{{ asset('images/plus.svg')}}" class="w-15" alt="plus">
                 <span class="text-green-500">Nova Transação</span>
-            </div>
+            </button>
+            {{$message}}
         </section>
 
         {{-- data-table --}}
