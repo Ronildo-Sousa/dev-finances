@@ -20,3 +20,6 @@ Route::get('/', function () {
 Route::get('/dashboard', function(){
     return view('auth.dashboard');
 });
+Route::get('/register', function(){
+    return view('auth.register');
+});
