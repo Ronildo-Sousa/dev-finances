@@ -9,11 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     @livewireStyles
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <script src="{{ asset('js/app.js') }}"></script>
 </head>
 <body >
-    @yield('content')
+    {{ $slot }}
 
-    <script src="{{ asset('js/app.js') }}"></script>
     @livewireScripts
+    <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false" data-turbo-eval="false"></script>
+</body>
 </body>
 </html>

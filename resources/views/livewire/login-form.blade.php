@@ -9,6 +9,19 @@
       </div>
 
       <form wire:submit.prevent="login" class="mt-8 space-y-6">
+
+        @if (session()->has('info'))
+            <div class="text-white text-center bg-indigo-500 p-1 rounded">
+                {{ session('info') }}
+            </div>
+        @endif
+
+        @if (session()->has('error'))
+            <div class="text-white text-center bg-red-500 p-1 rounded">
+                {{ session('error') }}
+            </div>
+        @endif
+
         @error('email')
         <div class="text-white bg-red-500 text-center rounded">
             <small>{{ $message}}</small>
@@ -27,10 +40,14 @@
           </div>
         </div>
 
+
         <div>
           <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             Entrar
           </button>
+        </div>
+        <div class="text-center">
+            <a href="{{ route('register') }}" class="text-white">Ainda não tem uma conta? Cadastre-se</a>
         </div>
       </form>
     </div>

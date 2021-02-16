@@ -24,6 +24,11 @@
                 <small>{{ $message}}</small>
             </div>
         @enderror
+        @if (session()->has('error'))
+            <div class="text-white text-center bg-red-500 p-1 rounded">
+                {{ session('error') }}
+            </div>
+        @endif
         <input type="hidden" name="remember" value="true">
 
           <div>
@@ -40,12 +45,15 @@
             <label for="password" class="text-white">Senha</label>
             <input wire:model="password" id="password" name="password" type="password"  class="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Insira sua senha">
           </div>
+
           <div>
             <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Cadastrar
             </button>
           </div>
-
+          <div class="text-center">
+            <a href="{{ route('login') }}" class="text-white">Já tem uma conta? Faça Login</a>
+         </div>
       </form>
 
 </div>

@@ -13,13 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
+Route::get('/', \App\Http\Livewire\LoginForm::class)->name('login');
+
+Route::middleware('auth')->group(function(){
+    Route::get('/dashboard', \App\Http\Livewire\Dashboard::class)->name('dashboard');
 });
 
-Route::get('/dashboard', function(){
-    return view('auth.dashboard');
-});
-Route::get('/register', function(){
-    return view('auth.register');
-});
+Route::get('/register', \App\Http\Livewire\RegisterForm::class)->name('register');
