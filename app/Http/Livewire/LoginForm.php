@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class LoginForm extends Component
 {
-    public $email;
-    public $password;
+    public $email = 'teste@email.com';
+    public $password = 'teste';
 
     protected $rules = [
         'email' => 'required|email',
@@ -18,7 +20,16 @@ class LoginForm extends Component
     {
         $this->validate();
 
-        dd('ok');
+        $credentials = [
+            'email' => $this->email,
+            'password' => $this->password
+        ];
+
+        if (!Auth::attempt($credentials)) {
+            session()->flash('error', 'Email ou senha incorretos!');
+            return redirect()->back();
+        }
+        return redirect()->to(route('dashboard'));
     }
 
     public function render()

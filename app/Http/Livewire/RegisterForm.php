@@ -11,9 +11,9 @@ class RegisterForm extends Component
 {
     use AuthorizesRequests;
 
-    public $name = 'teste';
-    public $email = 'teste@email.com';
-    public $password = 'teste';
+    public $name;
+    public $email;
+    public $password;
 
     protected $rules = [
         'name' => 'required|min:4',
