@@ -23,10 +23,15 @@
         @endif
 
         @error('email')
-        <div class="text-white bg-red-500 text-center rounded">
-            <small>{{ $message}}</small>
-        </div>
-    @enderror
+            <div class="text-white text-center bg-red-500 p-1 rounded">
+                <small>{{ $message}}</small>
+            </div>
+        @enderror
+        @error('password')
+            <div class="text-white text-center bg-red-500 p-1 rounded">
+                <small>{{ $message}}</small>
+            </div>
+        @enderror
         <input type="hidden" name="remember" value="true">
         <div class="rounded-md shadow-sm -space-y-px">
           <div>

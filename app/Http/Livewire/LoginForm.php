@@ -8,8 +8,8 @@ use Livewire\Component;
 
 class LoginForm extends Component
 {
-    public $email = 'teste@email.com';
-    public $password = 'teste';
+    public $email;
+    public $password;
 
     protected $rules = [
         'email' => 'required|email',

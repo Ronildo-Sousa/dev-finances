@@ -1,10 +1,12 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/images/exit.svg": "/images/exit.svg",
     "/images/expense.svg": "/images/expense.svg",
     "/images/income.svg": "/images/income.svg",
     "/images/logo.svg": "/images/logo.svg",
     "/images/minus.svg": "/images/minus.svg",
     "/images/plus.svg": "/images/plus.svg",
-    "/images/total.svg": "/images/total.svg"
+    "/images/total.svg": "/images/total.svg",
+    "/images/user-avatar.svg": "/images/user-avatar.svg"
 }
