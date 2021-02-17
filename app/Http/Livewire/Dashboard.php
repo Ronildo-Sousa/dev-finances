@@ -8,6 +8,17 @@ use Livewire\Component;
 class Dashboard extends Component
 {
     public $user;
+    public $newTransaction = false;
+
+    public function showModal()
+    {
+        $this->newTransaction = true;
+    }
+
+    public function closeModal()
+    {
+        $this->newTransaction = false;
+    }
 
     public function logout()
     {
