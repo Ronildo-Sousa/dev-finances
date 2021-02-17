@@ -1,3 +1,6 @@
+@section('title')
+Dashboard
+@endsection
 <div class="w-screen h-screen bg-gray-700">
     <header class="h-1/4 flex justify-center items-start bg-green-600">
         <div class="w-2/4"></div>
@@ -83,21 +86,29 @@
 
                 </div>
             </div>
+            @foreach ($finances as $finance)
+                <div class="w-11/12 p-3 mx-auto mt-3 bg-gray-200 rounded flex justify-around">
+                    <div class="w-1/4 font-semibold text-gray-500">
+                        {{ $finance->description }}
+                    </div>
+                    @if ($finance->amount > 0)
+                        <div class="w-1/4 font-semibold text-green-500">
+                            R$ {{ number_format($finance->amount, 2, ',','')}}
+                        </div>
+                    @else
+                        <div class="w-1/4 font-semibold text-red-500">
+                            R$ {{ number_format($finance->amount, 2, ',','')}}
+                        </div>
+                    @endif
 
-            <div class="w-11/12 p-3 mx-auto mt-3 bg-gray-200 rounded flex justify-around">
-                <div class="w-1/4 font-semibold text-gray-500">
-                    Conta de Luz
+                    <div class="w1/4 font-semibold text-gray-500">
+                        13/08/2000
+                    </div>
+                    <div class="w-1/4 cursor-pointer">
+                        <img class="mx-auto" src="{{ asset('images/minus.svg') }}" alt="">
+                    </div>
                 </div>
-                <div class="w-1/4 font-semibold text-red-500">
-                    -R$ 50,00
-                </div>
-                <div class="w1/4 font-semibold text-gray-500">
-                    13/08/2000
-                </div>
-                <div class="w-1/4 cursor-pointer">
-                    <img class="mx-auto" src="{{ asset('images/minus.svg') }}" alt="">
-                </div>
-            </div>
+            @endforeach
 
         </section>
 
@@ -140,19 +151,30 @@
                                 <h3 class="text-lg leading-6 font-semibold text-white" id="modal-headline">
                                     Criar Transação
                                 </h3>
+                                <div>
+                                    @error('description')
+                                        <div class="p-2 text-center text-white m-2 bg-red-500 rounded">{{$message}}</div>
+                                    @enderror
+                                    @error('amount')
+                                        <div class="p-2 text-center text-white m-2 bg-red-500 rounded">{{$message}}</div>
+                                    @enderror
+                                    @error('date')
+                                        <div class="p-2 text-center text-white m-2 bg-red-500 rounded">{{$message}}</div>
+                                    @enderror
+                                </div>
                                 <div class="w-50 mt-5 flex flex-col">
-                                    <input type="text" class="p-2 mb-5 rounded" placeholder="Descrição">
+                                    <input wire:model="description" type="text" class="p-2 mb-5 rounded" placeholder="Descrição">
                                     <div class="flex flex-col mb-3">
-                                        <input type="text" class="p-2 rounded" placeholder="Valor">
+                                        <input wire:model="amount" type="number" class="p-2 rounded" placeholder="Valor">
                                         <small class="text-gray-400">Use o sinal - (negativo) para despesas e , (vírgula) para casas decimais.</small>
                                     </div>
-                                    <input type="date" class="p-2 rounded">
+                                    <input wire:model="date" type="date" class="p-2 rounded">
                                 </div>
                             </div>
 
                     </div>
                     <div class="bg-gray-700 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                        <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+                        <button wire:click="createTransaction" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 0 sm:ml-3 sm:w-auto sm:text-sm">
                             Enviar
                         </button>
                         <button wire:click="closeModal" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">

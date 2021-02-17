@@ -2,13 +2,34 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Finance;
 use Illuminate\Support\Facades\Auth as FacadeAuth;
 use Livewire\Component;
 
 class Dashboard extends Component
 {
-    public $user;
+    public $description;
+    public $amount;
+    public $date;
+    public $finances;
     public $newTransaction = false;
+
+    protected $rules = [
+        'description' => 'required',
+        'amount' => 'required',
+        'date' => 'required'
+    ];
+
+    public function mount()
+    {
+        $this->finances = Finance::all();
+    }
+
+    public function createTransaction()
+    {
+        $this->validate();
+        dd('ok');
+    }
 
     public function showModal()
     {

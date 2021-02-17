@@ -17,6 +17,7 @@ class CreateFinancesTable extends Migration
             $table->id();
             $table->string('description');
             $table->double('amount');
+            $table->date('date');
             $table->foreignId('user_id')->constrained();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
