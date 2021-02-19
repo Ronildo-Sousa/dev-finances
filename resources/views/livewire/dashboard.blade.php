@@ -22,7 +22,7 @@ Dashboard
                     <img src="{{ asset('images/income.svg') }}" class="w-5" alt="plus">
                 </div>
                 <p class="text-green-500 text-2xl font-bold">
-                    R$ 17.400,00
+                    R$ {{ number_format($incomes, 2, ',','.')}}
                 </p>
             </div>
 
@@ -33,20 +33,33 @@ Dashboard
                     <img src="{{ asset('images/expense.svg') }}" class="w-5" alt="plus">
                 </div>
                 <p class="text-red-500 text-2xl font-bold">
-                    R$ 17.400,00
+                    R$ {{ number_format($expenses, 2, ',','.')}}
                 </p>
             </div>
 
             {{-- total --}}
-            <div class="w-1/4 p-5 rounded shadow-2xl flex flex-col text-white bg-indigo-700">
-                <div class="flex justify-between mb-5">
-                    <span class="text-sm font-semibold">Total</span>
-                    <img src="{{ asset('images/total.svg') }}" class="w-5" alt="plus">
+            @if ($total > 0)
+                <div class="w-1/4 p-5 rounded shadow-2xl flex flex-col text-white bg-indigo-600">
+                    <div class="flex justify-between mb-5">
+                        <span class="text-sm font-semibold">Total</span>
+                        <img src="{{ asset('images/total.svg') }}" class="w-5" alt="plus">
+                    </div>
+                    <p class="text-md text-2xl font-bold">
+                        R$ {{ number_format($total, 2, ',','')}}
+                    </p>
                 </div>
-                <p class="text-md text-2xl font-bold">
-                    R$ 17.400,00
-                </p>
-            </div>
+            @else
+                <div class="w-1/4 p-5 rounded shadow-2xl flex flex-col text-white bg-red-500">
+                    <div class="flex justify-between mb-5">
+                        <span class="text-sm font-semibold">Total</span>
+                        <img src="{{ asset('images/total.svg') }}" class="w-5" alt="plus">
+                    </div>
+                    <p class="text-md text-2xl font-bold">
+                        R$ {{ number_format($total, 2, ',','')}}
+                    </p>
+                </div>
+            @endif
+
         </section>
 
         <section class="mt-24 ml-16">
@@ -93,11 +106,11 @@ Dashboard
                     </div>
                     @if ($finance->amount > 0)
                         <div class="w-1/4 font-semibold text-green-500">
-                            R$ {{ number_format($finance->amount, 2, ',','')}}
+                            R$ {{ number_format($finance->amount, 2, ',','.')}}
                         </div>
                     @else
                         <div class="w-1/4 font-semibold text-red-500">
-                            R$ {{ number_format($finance->amount, 2, ',','')}}
+                            R$ {{ number_format($finance->amount, 2, ',','.')}}
                         </div>
                     @endif
 
@@ -109,7 +122,9 @@ Dashboard
                     </div>
                 </div>
             @endforeach
-
+           <div class="flex justify-center mt-3">
+               {{ $finances->links() }}
+           </div>
         </section>
 
         {{-- new transaction modal --}}

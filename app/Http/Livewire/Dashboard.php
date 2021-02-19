@@ -5,16 +5,23 @@ namespace App\Http\Livewire;
 use App\Models\Finance;
 use Illuminate\Support\Facades\Auth as FacadeAuth;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Dashboard extends Component
 {
+    use WithPagination;
+
     public $description;
     public $amount;
     public $date;
     public $user;
 
-    public $finances;
+    protected $allFinances;
     public $newTransaction = false;
+
+    public $expenses;
+    public $incomes;
+    public $total;
 
     protected $rules = [
         'description' => 'required',
@@ -25,7 +32,12 @@ class Dashboard extends Component
     public function mount()
     {
         $this->user = FacadeAuth::user();
-        $this->finances = Finance::all();
+
+        $this->allFinances = Finance::all();
+
+        $this->expenses = abs($this->allFinances->where('amount', '<', '0')->sum('amount'));
+        $this->incomes = abs($this->allFinances->where('amount', '>', '0')->sum('amount'));
+        $this->total = ($this->incomes - $this->expenses);
     }
 
     public function createTransaction()
@@ -61,6 +73,8 @@ class Dashboard extends Component
 
     public function render()
     {
-        return view('livewire.dashboard');
+        return view('livewire.dashboard', [
+            'finances' => $this->finances = Finance::paginate(4)
+        ]);
     }
 }
