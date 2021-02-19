@@ -45,7 +45,7 @@ Dashboard
                         <img src="{{ asset('images/total.svg') }}" class="w-5" alt="plus">
                     </div>
                     <p class="text-md text-2xl font-bold">
-                        R$ {{ number_format($total, 2, ',','')}}
+                        R$ {{ number_format($total, 2, ',','.')}}
                     </p>
                 </div>
             @else
@@ -55,7 +55,7 @@ Dashboard
                         <img src="{{ asset('images/total.svg') }}" class="w-5" alt="plus">
                     </div>
                     <p class="text-md text-2xl font-bold">
-                        R$ {{ number_format($total, 2, ',','')}}
+                        R$ {{ number_format($total, 2, ',','.')}}
                     </p>
                 </div>
             @endif
@@ -115,9 +115,12 @@ Dashboard
                     @endif
 
                     <div class="w1/4 font-semibold text-gray-500">
-                        {{ $finance->date}}
+                        @php
+                            $date = date_create($finance->date)
+                        @endphp
+                        {{ date_format($date,'d/m/Y') }}
                     </div>
-                    <div class="w-1/4 cursor-pointer">
+                    <div wire:click="deleteFinance({{ $finance->id }})" class="w-1/4 cursor-pointer">
                         <img class="mx-auto" src="{{ asset('images/minus.svg') }}" alt="">
                     </div>
                 </div>

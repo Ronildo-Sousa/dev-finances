@@ -36,17 +36,17 @@ Cadastro
 
           <div>
             <label for="email-address" class="text-white">Nome</label>
-            <input wire:model="name"  name="name" type="text"  class="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Insira seu Nome">
+            <input wire:model="name"  name="name" type="text" required  class="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Insira seu Nome">
           </div>
 
           <div>
             <label for="email-address" class="text-white">Email</label>
-            <input wire:model="email" id="email-address" name="email" type="email" autocomplete="email"  class="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Insira seu Email">
+            <input wire:model="email" id="email-address" name="email" type="email" autocomplete="email" required  class="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Insira seu Email">
           </div>
 
           <div>
             <label for="password" class="text-white">Senha</label>
-            <input wire:model="password" id="password" name="password" type="password"  class="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Insira sua senha">
+            <input wire:model="password" id="password" name="password" type="password" required  class="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Insira sua senha">
           </div>
 
           <div>

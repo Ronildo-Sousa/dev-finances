@@ -51,7 +51,6 @@ class Dashboard extends Component
             'user_id' => $this->user->id
         ]);
 
-        session()->flash('info', 'Transação criada com sucesso!');
         return redirect()->to(route('dashboard'));
     }
 
@@ -65,6 +64,14 @@ class Dashboard extends Component
         $this->newTransaction = false;
     }
 
+    public function deleteFinance($id)
+    {
+        $finance = Finance::find($id);
+        $finance->delete();
+
+        return redirect()->to(route('dashboard'));
+    }
+
     public function logout()
     {
         FacadeAuth::logout();
@@ -74,7 +81,7 @@ class Dashboard extends Component
     public function render()
     {
         return view('livewire.dashboard', [
-            'finances' => $this->finances = Finance::paginate(4)
+            'finances' => $this->finances = Finance::orderBy('created_at', 'DESC')->paginate(4)
         ]);
     }
 }
