@@ -1,5 +1,5 @@
 <div style="display:flex; flex-direction: column; align-items:center">
-    <img src="public/images/logo.svg" alt="logo" style="margin-bottom:15px">
+    <img src="public/images/logo.svg" alt="logo" style="margin-bottom:15px; background: #37414F; padding: 10px">
     <img src="public/images/readme.gif" alt="readme" style="width: 60vw;" />
 </div><br><br>
 
