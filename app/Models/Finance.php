@@ -12,6 +12,7 @@ class Finance extends Model
     protected $fillable = [
         'description',
         'amount',
+        'date',
         'user_id',
     ];
 }

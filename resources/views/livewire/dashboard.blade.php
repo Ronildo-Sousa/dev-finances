@@ -102,7 +102,7 @@ Dashboard
                     @endif
 
                     <div class="w1/4 font-semibold text-gray-500">
-                        13/08/2000
+                        {{ $finance->date}}
                     </div>
                     <div class="w-1/4 cursor-pointer">
                         <img class="mx-auto" src="{{ asset('images/minus.svg') }}" alt="">

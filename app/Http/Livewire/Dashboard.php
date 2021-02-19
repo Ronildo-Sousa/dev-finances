@@ -11,6 +11,8 @@ class Dashboard extends Component
     public $description;
     public $amount;
     public $date;
+    public $user;
+
     public $finances;
     public $newTransaction = false;
 
@@ -22,13 +24,23 @@ class Dashboard extends Component
 
     public function mount()
     {
+        $this->user = FacadeAuth::user();
         $this->finances = Finance::all();
     }
 
     public function createTransaction()
     {
         $this->validate();
-        dd('ok');
+
+        Finance::insert([
+            'description' => $this->description,
+            'amount' => $this->amount,
+            'date' => $this->date,
+            'user_id' => $this->user->id
+        ]);
+
+        session()->flash('info', 'Transação criada com sucesso!');
+        return redirect()->to(route('dashboard'));
     }
 
     public function showModal()
